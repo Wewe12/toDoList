@@ -13,19 +13,21 @@
 
     </Grid>
 
+   
+
     <Page.BottomAppBar >
-        <AppBar IsOpen="True" IsSticky="True" Background="#03A9F4">
-            <StackPanel Orientation="Horizontal" Background="#03A9F4">
-                <!--<CommandBar>
-                    -->
+        <!--<AppBar IsOpen="True" IsSticky="True" Background="#03A9F4">-->
+            <!--<StackPanel Orientation="Horizontal" Background="#03A9F4">-->
+            <CommandBar Background="#03A9F4">
+                  
                 <!--<CommandBar.SecondaryCommands>
                         <AppBarButton Name="Hide" Icon="Cancel" Label="Hide Other" Visibility="Collapsed" Click="Show_Click"/>
                     </CommandBar.SecondaryCommands>-->
-                <!--
-                </CommandBar>-->
-                <!--<AppBarButton Name="Show" Icon="Add"  Click="Add_Click"/>-->
-                <AppBarButton Name="Show" Icon="Add"  />
-            </StackPanel>
-        </AppBar>
+                <AppBarButton Name="Show" Icon="Add"  Click="Add_Click" />
+            </CommandBar>
+                
+               
+            <!--</StackPanel>-->
+        <!--</AppBar>-->
     </Page.BottomAppBar>
 </Page>
