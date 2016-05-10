@@ -8,11 +8,17 @@ namespace ToDo.Entity
 {
     class ToDoTask
     {
-        public string Id { get; set; }
-        public string Title { get; set; }
-        public string Value { get; set; }
-        public string OwnerId { get; set; }
-        public string CreatedAt { get; set; }
+        public string id { get; set; }
+        public string title { get; set; }
+        public string value { get; set; }
+        public string ownerId { get; set; }
+        public string createdAt { get; set; }
 
+        public ToDoTask ( string title, string value)
+        {
+            this.title = title;
+            this.value = value;
+
+        }
     }
 }
