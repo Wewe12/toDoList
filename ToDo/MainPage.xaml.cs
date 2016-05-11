@@ -41,21 +41,15 @@ namespace ToDo
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+           
             this.Frame.Navigate(typeof(AddPage));
         }
 
 
         private async void Logout_Click(object sender, RoutedEventArgs e)
         {
-            MessageDialog error = new MessageDialog(getViewModel().OwnerId);
-            await error.ShowAsync();
             getViewModel().removeLocalSettings();
-
-
-            MessageDialog errorr = new MessageDialog(getViewModel().OwnerId);
-            await errorr.ShowAsync();
-
-
+            this.Frame.GoBack();
         }
 
 

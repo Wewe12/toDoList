@@ -57,6 +57,23 @@ namespace ToDo.ViewModels
         }
 
 
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public void saveLocalSettings(String username)
         {
             localSettings.Values[LOCAL_SETTINGS_TAG] = username;
@@ -73,7 +90,7 @@ namespace ToDo.ViewModels
             }
             else
             {
-               // return value.ToString();
+              
                 ownerId = value.ToString();
             }
         }

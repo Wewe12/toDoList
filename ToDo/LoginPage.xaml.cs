@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using ToDo.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -33,10 +34,10 @@ namespace ToDo
             return DataContext as MainViewModel;
         }
 
-        private void onClickLoginButton(object sender, RoutedEventArgs e)
+        private  void onClickLoginButton(object sender, RoutedEventArgs e)
         {
-            getViewModel().saveLocalSettings("save");
-            this.Frame.Navigate(typeof(MainPage));
+           getViewModel().saveLocalSettings(usernameTextBox.Text);
+           this.Frame.Navigate(typeof(MainPage));
         }
     }
 }
