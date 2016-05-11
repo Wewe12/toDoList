@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using ToDo.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,12 +27,37 @@ namespace ToDo
         public MainPage()
         {
             this.InitializeComponent();
+            DataContext = MainViewModel.I();
+            getViewModel().loadLocalSettings();
+            
+
+
+
+        }
+        private MainViewModel getViewModel()
+        {
+            return DataContext as MainViewModel;
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(AddPage));
         }
+
+
+        private async void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            MessageDialog error = new MessageDialog(getViewModel().OwnerId);
+            await error.ShowAsync();
+            getViewModel().removeLocalSettings();
+
+
+            MessageDialog errorr = new MessageDialog(getViewModel().OwnerId);
+            await errorr.ShowAsync();
+
+
+        }
+
 
 
     }

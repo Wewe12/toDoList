@@ -7,7 +7,26 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    
+    <Grid Background="#03A9F4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Margin="0,0,0,0" Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Center" Width="200">
+           
+            <TextBlock>Please insert your username: </TextBlock>
+            <TextBox x:Name="usernameTextBox"/>
+        </StackPanel>
+
+        <StackPanel Margin="0,0,0,0" Grid.Column="0" Grid.Row="1"  HorizontalAlignment="Center" Width="200">
+            <Button Click="onClickLoginButton" Content="Sign in" Background="#CDDC39" Grid.Column="0" Grid.Row="1"/>
+        </StackPanel>
+
+
     </Grid>
 </Page>

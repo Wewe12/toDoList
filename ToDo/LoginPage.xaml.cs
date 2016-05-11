@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using ToDo.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,6 +26,17 @@ namespace ToDo
         public LoginPage()
         {
             this.InitializeComponent();
+            DataContext = MainViewModel.I();
+        }
+        private MainViewModel getViewModel()
+        {
+            return DataContext as MainViewModel;
+        }
+
+        private void onClickLoginButton(object sender, RoutedEventArgs e)
+        {
+            getViewModel().saveLocalSettings("save");
+            this.Frame.Navigate(typeof(MainPage));
         }
     }
 }

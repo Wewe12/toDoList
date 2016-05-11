@@ -24,7 +24,8 @@
                         <AppBarButton Name="Hide" Icon="Cancel" Label="Hide Other" Visibility="Collapsed" Click="Show_Click"/>
                     </CommandBar.SecondaryCommands>-->
                 <AppBarButton Name="Show" Icon="Add"  Click="Add_Click" />
-            </CommandBar>
+            <AppBarButton Name="Sync" Icon="Delete"  Click="Logout_Click" />
+        </CommandBar>
                 
                
             <!--</StackPanel>-->
