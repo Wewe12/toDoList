@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToDo.ViewModels;
 
 namespace ToDo.Entity
 {
@@ -18,6 +19,7 @@ namespace ToDo.Entity
         {
             this.title = title;
             this.value = value;
+            this.ownerId = MainViewModel.I().OwnerId;
 
         }
     }

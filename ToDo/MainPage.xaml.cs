@@ -29,12 +29,15 @@ namespace ToDo
             this.InitializeComponent();
             DataContext = MainViewModel.I();
             getViewModel().loadLocalSettings();
-            
+            getViewModel().newTASK();
+
+
+
 
 
 
         }
-        private MainViewModel getViewModel()
+    private MainViewModel getViewModel()
         {
             return DataContext as MainViewModel;
         }
@@ -46,7 +49,7 @@ namespace ToDo
         }
 
 
-        private async void Logout_Click(object sender, RoutedEventArgs e)
+        private void Logout_Click(object sender, RoutedEventArgs e)
         {
             getViewModel().removeLocalSettings();
             this.Frame.GoBack();

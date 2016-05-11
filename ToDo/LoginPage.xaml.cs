@@ -34,10 +34,19 @@ namespace ToDo
             return DataContext as MainViewModel;
         }
 
-        private  void onClickLoginButton(object sender, RoutedEventArgs e)
+        private async void onClickLoginButton(object sender, RoutedEventArgs e)
         {
-           getViewModel().saveLocalSettings(usernameTextBox.Text);
-           this.Frame.Navigate(typeof(MainPage));
+            if (usernameTextBox.Text != "")
+            {
+                getViewModel().saveLocalSettings(usernameTextBox.Text);
+                this.Frame.Navigate(typeof(MainPage));
+            }
+            else
+            {
+                MessageDialog error = new MessageDialog("Username cannot be empty");
+                await error.ShowAsync();
+            }
+           
         }
     }
 }

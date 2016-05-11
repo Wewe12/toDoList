@@ -22,24 +22,10 @@ namespace ToDo.ViewModels
 
 
         private ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-       
-
-       
-
-
 
         private static MainViewModel instance { get; set; }
 
-
-        public static MainViewModel I()
-        {
-            if (instance == null)
-            {
-                instance = new MainViewModel();
-            }
-            return instance;
-        }
-
+      
 
 
         private ObservableCollection<ToDoTask> itemsCollection;
@@ -56,8 +42,31 @@ namespace ToDo.ViewModels
             }
         }
 
+        public void  newTASK()
+        {
+            ItemsCollection = new ObservableCollection<ToDoTask>();
+            ItemsCollection.Add(new ToDoTask("NEW1", "test"));
+            ItemsCollection.Add(new ToDoTask("NEW2", "test"));
+            ItemsCollection.Add(new ToDoTask("NEW2", "test"));
+            ItemsCollection.Add(new ToDoTask("NEW2", "test"));
+            ItemsCollection.Add(new ToDoTask("NEW2", "test"));
+            ItemsCollection.Add(new ToDoTask("NEW2", "test"));
+            ItemsCollection.Add(new ToDoTask("NEW2", "test"));
 
-        
+        }
+
+        public static MainViewModel I()
+        {
+            if (instance == null)
+            {
+                instance = new MainViewModel();
+            }
+           
+
+            return instance;
+        }
+
+
 
 
 

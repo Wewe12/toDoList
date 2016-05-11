@@ -7,7 +7,34 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+
+    <Page.Resources>
+        <DataTemplate x:Key="ItemsDataTemplate">
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding title}" HorizontalAlignment="Center" Grid.Row="0" TextWrapping="WrapWholeWords"></TextBlock>
+                <TextBlock Text="{Binding ownerId}" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="WrapWholeWords"></TextBlock>
+
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+    
     <Grid Background="#FFFFFF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" x:Name="ListTitle" x:Uid="TaskListTitle"  FontSize="18.667" HorizontalAlignment="Center" VerticalAlignment="Center" ></TextBlock>
+        <ListBox Grid.Row="1" x:Name="ListBox1" ItemsSource="{Binding ItemsCollection}" ItemTemplate="{ StaticResource ItemsDataTemplate}"  Background="#FFFFFF">
+        </ListBox>
 
 
 
