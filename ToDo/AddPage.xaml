@@ -8,6 +8,37 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+           
+        </Grid.RowDefinitions>
+        <StackPanel Margin="30,0,0,0" Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Center" >
+
+            <TextBlock>Title: </TextBlock>
+            <TextBox x:Name ="titleTexBox"></TextBox>
+            <TextBlock>Value:</TextBlock>
+            <TextBox x:Name ="valueTextBox" ></TextBox>
+        </StackPanel>
+
+        <StackPanel Margin="45,0,0,0" Grid.Column="0" Grid.Row="1"  HorizontalAlignment="Center">
+            <Button  Content="Add" Background="#CDDC39"/>
+        </StackPanel>
+
+
+
 
     </Grid>
+
+
+
+    <Page.BottomAppBar >
+        <CommandBar Background="#03A9F4">
+            <AppBarButton Name="Show" Icon="Add"   />
+            <AppBarButton Name="Sync" Icon="Cancel"  />
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>
