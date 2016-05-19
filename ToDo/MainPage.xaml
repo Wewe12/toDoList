@@ -8,7 +8,6 @@
     mc:Ignorable="d">
 
 
-
     <Page.Resources>
         <DataTemplate x:Key="ItemsDataTemplate">
             <Grid HorizontalAlignment="Stretch">
@@ -23,27 +22,22 @@
                 </Grid.RowDefinitions>
                 <TextBlock Text="{Binding title}" HorizontalAlignment="Center" Grid.Row="0" TextWrapping="WrapWholeWords"></TextBlock>
                 <TextBlock Text="{Binding ownerId}" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="WrapWholeWords"></TextBlock>
-
             </Grid>
         </DataTemplate>
     </Page.Resources>
-    
-    <Grid Background="#FFFFFF">
+
+    <Grid Background="#03A9F4">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" ></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" x:Name="ListTitle" x:Uid="TaskListTitle" Text =" To do lists" FontSize="18.667" HorizontalAlignment="Center" VerticalAlignment="Center" ></TextBlock>
+        <TextBlock Grid.Row="0" x:Name="ListTitle" x:Uid="TaskListTitle" Text =" TO DO " FontSize="18.667" HorizontalAlignment="Center" VerticalAlignment="Center" ></TextBlock>
         <ProgressRing x:Name="progressRing" Height="90" Width="90" ></ProgressRing>
         <ListBox Grid.Row="1" x:Name="ListBox1" ItemsSource="{Binding ItemsCollection}" ItemTemplate="{ StaticResource ItemsDataTemplate}"  Background="#FFFFFF" SelectionChanged="ListBox1_SelectionChanged">
         </ListBox>
 
-
-
     </Grid>
-
-   
-
+ 
     <Page.BottomAppBar >
         <CommandBar Background="#03A9F4">
             <AppBarButton Name="Show" Icon="Add" Label="Add"  Click="Add_Click" />
