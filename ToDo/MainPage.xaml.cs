@@ -77,6 +77,8 @@ namespace ToDo
             else
             {
                 getViewModel().CurrentObject = (ToDoTask)ListBox1.SelectedItem;
+               var nere =  getViewModel().CurrentObject.title;
+
                 Frame.Navigate(typeof(EditPage));
             }
         }

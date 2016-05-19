@@ -39,7 +39,7 @@ namespace ToDo.ViewModels
         public ObservableCollection<ToDoTask> ItemsCollection
         {
             get { return itemsCollection;}
-            set {itemsCollection = value; OnPropertyChanged("ItemsCollection");}
+            set { itemsCollection = value; OnPropertyChanged("ItemsCollection");}
         }
 
         public static MainViewModel I()
