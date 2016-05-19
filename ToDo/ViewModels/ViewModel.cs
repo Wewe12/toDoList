@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace ToDo.ViewModels
 {
-    public class ViewModel : INotifyPropertyChanged
+    public class ViewModel : INotifyPropertyChanged  
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

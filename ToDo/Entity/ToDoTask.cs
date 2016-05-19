@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,14 @@ namespace ToDo.Entity
             this.title = title;
             this.value = value;
             this.ownerId = MainViewModel.I().OwnerId;
+            this.id = "0";
+            this.createdAt = DateTime.Now.ToString();
 
+        }
+
+        public string SerializeToDoTask()
+        {
+            return JsonConvert.SerializeObject(this);
         }
     }
 }

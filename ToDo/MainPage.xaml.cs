@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using ToDo.Entity;
 using ToDo.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -28,18 +29,31 @@ namespace ToDo
         {
             this.InitializeComponent();
             DataContext = MainViewModel.I();
+            
             getViewModel().loadLocalSettings();
-            getViewModel().newTASK();
 
-
-
-
-
+            //getViewModel().getOwnerTasks();
+           // getViewModel().getTasks();
+            
+           
 
         }
     private MainViewModel getViewModel()
         {
             return DataContext as MainViewModel;
+        }
+
+        private async void Owner_Task_Click(object sender, RoutedEventArgs e)
+        {
+            progressRing.IsActive = true;
+            await getViewModel().getOwnerTasks();
+            progressRing.IsActive = false;
+        }
+        private async void All_Task_Click(object sender, RoutedEventArgs e)
+        {
+            progressRing.IsActive = true;
+            await getViewModel().getTasks();
+            progressRing.IsActive = false;
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -54,6 +68,19 @@ namespace ToDo
             getViewModel().removeLocalSettings();
             this.Frame.GoBack();
         }
+        private void ListBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListBox1.SelectedItem == null)
+            {
+                return;
+            }
+            else
+            {
+                getViewModel().CurrentObject = (ToDoTask)ListBox1.SelectedItem;
+                Frame.Navigate(typeof(EditPage));
+            }
+        }
+
 
 
 

@@ -48,5 +48,11 @@ namespace ToDo
             }
            
         }
+        private async void onClickAboutButton(object sender, RoutedEventArgs e)
+        {
+            MessageDialog aboutDialog = new MessageDialog(" ");
+            await aboutDialog.ShowAsync();
+
+        }
     }
 }

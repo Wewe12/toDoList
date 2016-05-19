@@ -9,22 +9,26 @@
 
     <Grid Background="#03A9F4">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.5*"/>
+
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Margin="0,0,0,0" Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Center" Width="200">
-           
-            <TextBlock>Please insert your username: </TextBlock>
+        <StackPanel  Margin="0,50,0,0" Grid.Column="0" Grid.Row="1"  HorizontalAlignment="Center" Width="200">
+
+            <TextBlock >Please insert your username:</TextBlock>
             <TextBox x:Name="usernameTextBox"/>
+        
+            
         </StackPanel>
 
-        <StackPanel Margin="0,0,0,0" Grid.Column="0" Grid.Row="1"  HorizontalAlignment="Center" Width="200">
-            <Button Click="onClickLoginButton" Content="Sign in" Background="#CDDC39" Grid.Column="0" Grid.Row="1"/>
+        <StackPanel Margin="0,0,0,0" Grid.Column="0" Grid.Row="2"   >
+            <Button Click="onClickLoginButton" Content="Sign in" Background="#CDDC39" HorizontalAlignment="Center" />
+            <Button Click="onClickAboutButton" Content="About me" Background="#B3F5FC" Margin="0,10,0,0"  HorizontalAlignment="Center"/>
         </StackPanel>
 
 

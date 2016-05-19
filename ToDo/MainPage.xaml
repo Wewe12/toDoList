@@ -8,6 +8,7 @@
     mc:Ignorable="d">
 
 
+
     <Page.Resources>
         <DataTemplate x:Key="ItemsDataTemplate">
             <Grid HorizontalAlignment="Stretch">
@@ -29,11 +30,12 @@
     
     <Grid Background="#FFFFFF">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50" ></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" x:Name="ListTitle" x:Uid="TaskListTitle"  FontSize="18.667" HorizontalAlignment="Center" VerticalAlignment="Center" ></TextBlock>
-        <ListBox Grid.Row="1" x:Name="ListBox1" ItemsSource="{Binding ItemsCollection}" ItemTemplate="{ StaticResource ItemsDataTemplate}"  Background="#FFFFFF">
+        <TextBlock Grid.Row="0" x:Name="ListTitle" x:Uid="TaskListTitle" Text =" To do lists" FontSize="18.667" HorizontalAlignment="Center" VerticalAlignment="Center" ></TextBlock>
+        <ProgressRing x:Name="progressRing" Height="90" Width="90" ></ProgressRing>
+        <ListBox Grid.Row="1" x:Name="ListBox1" ItemsSource="{Binding ItemsCollection}" ItemTemplate="{ StaticResource ItemsDataTemplate}"  Background="#FFFFFF" SelectionChanged="ListBox1_SelectionChanged">
         </ListBox>
 
 
@@ -43,19 +45,12 @@
    
 
     <Page.BottomAppBar >
-        <!--<AppBar IsOpen="True" IsSticky="True" Background="#03A9F4">-->
-            <!--<StackPanel Orientation="Horizontal" Background="#03A9F4">-->
-            <CommandBar Background="#03A9F4">
-                  
-                <!--<CommandBar.SecondaryCommands>
-                        <AppBarButton Name="Hide" Icon="Cancel" Label="Hide Other" Visibility="Collapsed" Click="Show_Click"/>
-                    </CommandBar.SecondaryCommands>-->
-                <AppBarButton Name="Show" Icon="Add"  Click="Add_Click" />
-            <AppBarButton Name="Sync" Icon="Cancel"  Click="Logout_Click" />
+        <CommandBar Background="#03A9F4">
+            <AppBarButton Name="Show" Icon="Add" Label="Add"  Click="Add_Click" />
+            <AppBarButton Name="SyncOwner" Icon="Sync" Label="My tasks" Click="Owner_Task_Click" />
+            <AppBarButton Name="SyncAll" Icon="Sync" Label="All tasks" Click="All_Task_Click" />
+            <AppBarButton Name="Cancel" Icon="Cancel" Label="Logout" Click="Logout_Click" />
+            
         </CommandBar>
-                
-               
-            <!--</StackPanel>-->
-        <!--</AppBar>-->
     </Page.BottomAppBar>
 </Page>
