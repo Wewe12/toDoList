@@ -28,7 +28,10 @@ namespace ToDo
         public EditPage()
         {
             this.InitializeComponent();
-            DataContext = new MainViewModel();
+            DataContext = MainViewModel.I(); 
+            
+     
+
         }
 
 

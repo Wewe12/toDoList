@@ -24,7 +24,7 @@ namespace ToDo.ViewModels
 
         private string ownerId { get; set; }
         public string OwnerId { get { return ownerId; } set { ownerId = value; } }
-        private ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+        private ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
         private static MainViewModel instance { get; set; }
         private ToDoTask currentObject { get; set; }
         public ToDoTask CurrentObject
@@ -49,6 +49,11 @@ namespace ToDo.ViewModels
                 instance = new MainViewModel();
             }
             return instance;
+        }
+
+        public MainViewModel()
+        {
+
         }
 
         //Local setting

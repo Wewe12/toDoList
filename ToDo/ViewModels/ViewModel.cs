@@ -11,8 +11,7 @@ namespace ToDo.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void OnPropertyChanged(string name)
-        {
+        public void OnPropertyChanged(string name){
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
             {
