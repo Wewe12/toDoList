@@ -39,7 +39,10 @@ namespace ToDo.ViewModels
         public ObservableCollection<ToDoTask> ItemsCollection
         {
             get { return itemsCollection;}
-            set { itemsCollection = value; OnPropertyChanged("ItemsCollection");}
+            set { itemsCollection = value;
+                OnPropertyChanged("ItemsCollection");
+                //OnCollectionChanged("ItemsCollection");
+            }
         }
 
         public static MainViewModel I()
@@ -137,9 +140,6 @@ namespace ToDo.ViewModels
                 var response = await client.SendAsync(request);
                 var nwoa = response.Content;
                 int i = 2;
-                
-
-              
             }
         }
 

@@ -33,7 +33,7 @@ namespace ToDo
             getViewModel().loadLocalSettings();
 
             //getViewModel().getOwnerTasks();
-           // getViewModel().getTasks();
+         
             
            
 
@@ -45,15 +45,17 @@ namespace ToDo
 
         private async void Owner_Task_Click(object sender, RoutedEventArgs e)
         {
-            progressRing.IsActive = true;
+
+            startProgressBar();
             await getViewModel().getOwnerTasks();
-            progressRing.IsActive = false;
+            stopProgressBar();
+
         }
         private async void All_Task_Click(object sender, RoutedEventArgs e)
         {
-            progressRing.IsActive = true;
+            startProgressBar();
             await getViewModel().getTasks();
-            progressRing.IsActive = false;
+            stopProgressBar();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -79,6 +81,18 @@ namespace ToDo
                getViewModel().CurrentObject = (ToDoTask)ListBox1.SelectedItem;
                 Frame.Navigate(typeof(DetailsPage));
             }
+        }
+
+        private void startProgressBar()
+        {
+            contentGrid.Visibility = Visibility.Collapsed;
+            progressGrid.Visibility = Visibility.Visible;
+        }
+
+        private void stopProgressBar()
+        {
+            contentGrid.Visibility = Visibility.Visible;
+            progressGrid.Visibility = Visibility.Collapsed;
         }
 
 

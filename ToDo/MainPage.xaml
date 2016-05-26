@@ -25,19 +25,20 @@
             </Grid>
         </DataTemplate>
     </Page.Resources>
+    <Grid x:Name="layoutRoot">
+        <Grid  x:Name="contentGrid" Background="#03A9F4" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" ></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" x:Name="ListTitle" x:Uid="TaskListTitle" Text =" TO DO " FontSize="18.667" HorizontalAlignment="Center" VerticalAlignment="Center" ></TextBlock>
+            <ListBox Grid.Row="1" x:Name="ListBox1" ItemsSource="{Binding ItemsCollection}" ItemTemplate="{ StaticResource ItemsDataTemplate}"  Background="#FFFFFF" SelectionChanged="ListBox1_SelectionChanged">
+            </ListBox>
 
-    <Grid Background="#03A9F4">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50" ></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" x:Name="ListTitle" x:Uid="TaskListTitle" Text =" TO DO " FontSize="18.667" HorizontalAlignment="Center" VerticalAlignment="Center" ></TextBlock>
-        <ProgressRing x:Name="progressRing" Height="90" Width="90" ></ProgressRing>
-        <ListBox Grid.Row="1" x:Name="ListBox1" ItemsSource="{Binding ItemsCollection}" ItemTemplate="{ StaticResource ItemsDataTemplate}"  Background="#FFFFFF" SelectionChanged="ListBox1_SelectionChanged">
-        </ListBox>
-
+        </Grid>
+        <ProgressRing x:Name="progressGrid" Height="90" Width="90" Visibility="Collapsed" IsActive="True"/>
     </Grid>
- 
+
     <Page.BottomAppBar >
         <CommandBar Background="#03A9F4">
             <AppBarButton Name="Show" Icon="Add" Label="Add"  Click="Add_Click" />

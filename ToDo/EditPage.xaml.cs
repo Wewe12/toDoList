@@ -29,8 +29,6 @@ namespace ToDo
         {
             this.InitializeComponent();
             DataContext = MainViewModel.I(); 
-            
-     
 
         }
 
