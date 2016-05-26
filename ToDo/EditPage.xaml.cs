@@ -53,20 +53,28 @@ namespace ToDo
             }
         }
 
-
-        private void Accept_Click(object sender, RoutedEventArgs e)
+        // TO DO problem with sending put
+        private async void Accept_Click(object sender, RoutedEventArgs e)
         {
             ToDoTask myTask = new ToDoTask(titleTextBox.Text, valueTextBox.Text, getViewModel().CurrentObject.id);
-            getViewModel().updateTask(myTask);
-            this.Frame.GoBack();
+            if (getViewModel().CurrentObject.ownerId.Equals(myTask.ownerId))
+            {
+                getViewModel().updateTask(myTask);
+                Frame.GoBack();
+            }
+              
+            else {
+                var dialog = new MessageDialog("That's not you task. You don't have right to modify them");
+                await dialog.ShowAsync();
+            }
         }
 
 
         private async void Delete_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new MessageDialog("Are you sure you want to delete this task?");
-            dialog.Commands.Add(new UICommand { Label = "Yes", Id = 0 });
-            dialog.Commands.Add(new UICommand { Label = "No", Id = 1 });
+            dialog.Commands.Add(new UICommand { Label = "Yes", Id = 1 });
+            dialog.Commands.Add(new UICommand { Label = "No", Id = 0 });
             var result = await dialog.ShowAsync();
 
             if ((int)result.Id == 0)
@@ -77,8 +85,9 @@ namespace ToDo
             if ((int)result.Id == 1)
             {
                 //delete post
-
-                this.Frame.GoBack();
+                ToDoTask myTask = new ToDoTask(titleTextBox.Text, valueTextBox.Text, getViewModel().CurrentObject.id);
+                await getViewModel().deleteTask(myTask);
+                this.Frame.Navigate(typeof(MainPage));
             }
 
         }

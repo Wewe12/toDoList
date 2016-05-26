@@ -129,10 +129,17 @@ namespace ToDo.ViewModels
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri(REST_BASE_URL);
-
+                client.DefaultRequestHeaders
+                     .Accept
+                     .Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, REST_PATH + myTask.id);
                 request.Content = new StringContent(myTask.SerializeToDoTask(), Encoding.UTF8, "application/json");
-                await client.SendAsync(request);
+                var response = await client.SendAsync(request);
+                var nwoa = response.Content;
+                int i = 2;
+                
+
+              
             }
         }
 
@@ -146,6 +153,7 @@ namespace ToDo.ViewModels
 
                 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, REST_PATH + myTask.id);
                 await client.SendAsync(request);
+                
             }
         }
 

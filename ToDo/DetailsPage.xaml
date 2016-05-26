@@ -12,10 +12,8 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-
             <RowDefinition Height="50" ></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-
         </Grid.RowDefinitions>
 
         <TextBlock Margin="0,10,0,0" HorizontalAlignment="Center">Edittask</TextBlock>
@@ -23,11 +21,7 @@
 
 
             <StackPanel Margin="20,50,0,0"   HorizontalAlignment="Left" Width="250" >
-
-
-
                 <TextBlock Margin="0,10,0,0" FontWeight="Bold" x:Name ="titleTextBox" TextWrapping="Wrap" Text="{Binding CurrentObject.title,  Mode=TwoWay}"></TextBlock>
-           
                 <TextBlock Margin="0,10,0,0" x:Name ="valueTextBox" Text="{Binding CurrentObject.value, Mode=TwoWay}"  TextWrapping="Wrap"></TextBlock>
             </StackPanel>
 

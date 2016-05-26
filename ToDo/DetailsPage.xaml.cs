@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using ToDo.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -37,9 +38,18 @@ namespace ToDo
         {
             this.Frame.GoBack();
         }
-        private void Edit_Click(object sender, RoutedEventArgs e)
+        private async void Edit_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(EditPage));
+
+            if (getViewModel().CurrentObject.ownerId.Equals(getViewModel().OwnerId))
+            {
+                Frame.Navigate(typeof(EditPage));
+            }
+            else
+            {
+                var dialog = new MessageDialog("That's not you task. You don't have right to modify them");
+                await dialog.ShowAsync();
+            }
         }
     }
 }
