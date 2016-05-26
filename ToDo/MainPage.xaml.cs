@@ -77,7 +77,7 @@ namespace ToDo
             else
             {
                getViewModel().CurrentObject = (ToDoTask)ListBox1.SelectedItem;
-                Frame.Navigate(typeof(EditPage));
+                Frame.Navigate(typeof(DetailsPage));
             }
         }
 

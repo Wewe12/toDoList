@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using ToDo.Entity;
 using ToDo.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -23,46 +21,25 @@ namespace ToDo
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class AddPage : Page
+    public sealed partial class DetailsPage : Page
     {
-        public AddPage()
+        public DetailsPage()
         {
             this.InitializeComponent();
-            DataContext = new MainViewModel();
-
-           
+            DataContext = MainViewModel.I();
         }
-
         private MainViewModel getViewModel()
         {
             return DataContext as MainViewModel;
         }
 
-        private async void Cancel_Click(object sender, RoutedEventArgs e)
+        private  void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new MessageDialog("Are you sure you want to cancel?");
-            dialog.Commands.Add(new UICommand { Label = "Yes", Id = 0 });
-            dialog.Commands.Add(new UICommand { Label = "No", Id = 1 });
-            var result = await dialog.ShowAsync();
-
-            if ((int)result.Id == 0)
-            {
-                this.Frame.GoBack();
-            }
-            
-
-            
-        }
-
-        private void Accept_Click(object sender, RoutedEventArgs e)
-        {
-            ToDoTask myTask = new ToDoTask(titleTextBox.Text, valueTextBox.Text, "");
-
-            getViewModel().postTask(myTask);
             this.Frame.GoBack();
         }
-
-
-
-   }
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(EditPage));
+        }
+    }
 }

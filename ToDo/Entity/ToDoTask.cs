@@ -16,12 +16,14 @@ namespace ToDo.Entity
         public string ownerId { get; set; }
         public string createdAt { get; set; }
 
-        public ToDoTask ( string title, string value)
+        public ToDoTask ( string title, string value, string id)
         {
             this.title = title;
             this.value = value;
             this.ownerId = MainViewModel.I().OwnerId;
-            this.id = "0";
+            if (id == "") this.id = "0";
+            else this.id = id;
+            
             this.createdAt = DateTime.Now.ToString();
 
         }

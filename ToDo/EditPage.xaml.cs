@@ -56,9 +56,31 @@ namespace ToDo
 
         private void Accept_Click(object sender, RoutedEventArgs e)
         {
-            ToDoTask myTask = new ToDoTask(titleTextBox.Text, valueTextBox.Text);
+            ToDoTask myTask = new ToDoTask(titleTextBox.Text, valueTextBox.Text, getViewModel().CurrentObject.id);
             getViewModel().updateTask(myTask);
             this.Frame.GoBack();
+        }
+
+
+        private async void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new MessageDialog("Are you sure you want to delete this task?");
+            dialog.Commands.Add(new UICommand { Label = "Yes", Id = 0 });
+            dialog.Commands.Add(new UICommand { Label = "No", Id = 1 });
+            var result = await dialog.ShowAsync();
+
+            if ((int)result.Id == 0)
+            {
+                this.Frame.GoBack();
+            }
+
+            if ((int)result.Id == 1)
+            {
+                //delete post
+
+                this.Frame.GoBack();
+            }
+
         }
     }
 }
