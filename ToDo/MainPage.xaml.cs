@@ -31,11 +31,8 @@ namespace ToDo
             DataContext = MainViewModel.I();
             
             getViewModel().loadLocalSettings();
-
+     
             //getViewModel().getOwnerTasks();
-         
-            
-           
 
         }
     private MainViewModel getViewModel()
@@ -49,6 +46,7 @@ namespace ToDo
             startProgressBar();
             await getViewModel().getOwnerTasks();
             stopProgressBar();
+            this.Frame.Navigate(typeof(MainPage));
 
         }
         private async void All_Task_Click(object sender, RoutedEventArgs e)
@@ -56,6 +54,7 @@ namespace ToDo
             startProgressBar();
             await getViewModel().getTasks();
             stopProgressBar();
+            this.Frame.Navigate(typeof(MainPage));
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -68,7 +67,7 @@ namespace ToDo
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
             getViewModel().removeLocalSettings();
-            this.Frame.GoBack();
+            this.Frame.Navigate(typeof(LoginPage));
         }
         private void ListBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

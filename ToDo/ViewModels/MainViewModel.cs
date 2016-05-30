@@ -41,7 +41,7 @@ namespace ToDo.ViewModels
             get { return itemsCollection;}
             set { itemsCollection = value;
                 OnPropertyChanged("ItemsCollection");
-                //OnCollectionChanged("ItemsCollection");
+          
             }
         }
 
@@ -129,12 +129,11 @@ namespace ToDo.ViewModels
         //PUT
         public async void updateTask(ToDoTask myTask)
         {
+            myTask.createdAt = DateTime.Now.ToString("dd'-'MM'-'yyyy HH:mm:ss");
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri(REST_BASE_URL);
-                client.DefaultRequestHeaders
-                     .Accept
-                     .Add(new MediaTypeWithQualityHeaderValue("application/json"));
+               
                 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, REST_PATH + myTask.id);
                 request.Content = new StringContent(myTask.SerializeToDoTask(), Encoding.UTF8, "application/json");
                 var response = await client.SendAsync(request);
@@ -142,7 +141,6 @@ namespace ToDo.ViewModels
                 int i = 2;
             }
         }
-
 
         //DELETE
         public async Task deleteTask(ToDoTask myTask)
