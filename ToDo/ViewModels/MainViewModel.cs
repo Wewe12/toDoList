@@ -24,8 +24,10 @@ namespace ToDo.ViewModels
 
         private string ownerId { get; set; }
         public string OwnerId { get { return ownerId; } set { ownerId = value; } }
+
         private ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
         private static MainViewModel instance { get; set; }
+
         private ToDoTask currentObject { get; set; }
         public ToDoTask CurrentObject
         {
@@ -33,15 +35,12 @@ namespace ToDo.ViewModels
             set { currentObject = value; OnPropertyChanged("CurrentObject"); }
         }
 
-
-
         private ObservableCollection<ToDoTask> itemsCollection;
         public ObservableCollection<ToDoTask> ItemsCollection
         {
             get { return itemsCollection;}
             set { itemsCollection = value;
                 OnPropertyChanged("ItemsCollection");
-          
             }
         }
 
@@ -92,7 +91,6 @@ namespace ToDo.ViewModels
         {    
             using (HttpClient client = new HttpClient())
             {
-                //var result = await client.GetAsync(REST_BASE_URL + "/" + REST_PATH + "?OwnerId=" + ownerId);
                 var result = await client.GetAsync(REST_BASE_URL + "/" + REST_PATH );
                 var items = await result.Content.ReadAsStringAsync();
                 itemsCollection =  JsonConvert.DeserializeObject<ObservableCollection<ToDoTask>>(items);
@@ -101,7 +99,6 @@ namespace ToDo.ViewModels
         //GET 
         public async Task getOwnerTasks()
         {
-      
             using (HttpClient client = new HttpClient())
             {
                 var result = await client.GetAsync(REST_BASE_URL + "/" + REST_PATH + OWNER_SEARCH_PATH + ownerId);
@@ -133,12 +130,8 @@ namespace ToDo.ViewModels
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri(REST_BASE_URL);
-               
                 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, REST_PATH + myTask.id);
                 request.Content = new StringContent(myTask.SerializeToDoTask(), Encoding.UTF8, "application/json");
-                var response = await client.SendAsync(request);
-                var nwoa = response.Content;
-                int i = 2;
             }
         }
 

@@ -40,9 +40,13 @@ namespace ToDo
 
         private async void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new MessageDialog("Are you sure you want to cancel?");
-            dialog.Commands.Add(new UICommand { Label = "Yes", Id = 0 });
-            dialog.Commands.Add(new UICommand { Label = "No", Id = 1 });
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            var yesTag = loader.GetString("yesTag");
+            var noTag = loader.GetString("noTag");
+            var cancelNotification = loader.GetString("cancelNotification");
+            var dialog = new MessageDialog(cancelNotification);
+            dialog.Commands.Add(new UICommand { Label = yesTag, Id = 0 });
+            dialog.Commands.Add(new UICommand { Label = noTag, Id = 1 });
             var result = await dialog.ShowAsync();
 
             if ((int)result.Id == 0)
@@ -51,7 +55,6 @@ namespace ToDo
             }
         }
 
-        // TO DO problem with sending put
         private async void Accept_Click(object sender, RoutedEventArgs e)
         {
             ToDoTask myTask = new ToDoTask(titleTextBox.Text, valueTextBox.Text, getViewModel().CurrentObject.id);
@@ -62,7 +65,9 @@ namespace ToDo
             }
               
             else {
-                var dialog = new MessageDialog("That's not you task. You don't have right to modify them");
+                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+                var warnDialog = loader.GetString("yesTag");
+                var dialog = new MessageDialog(warnDialog);
                 await dialog.ShowAsync();
             }
         }
@@ -70,9 +75,13 @@ namespace ToDo
 
         private async void Delete_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new MessageDialog("Are you sure you want to delete this task?");
-            dialog.Commands.Add(new UICommand { Label = "Yes", Id = 1 });
-            dialog.Commands.Add(new UICommand { Label = "No", Id = 0 });
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            var deleteWarnDialog = loader.GetString("deleteWarnDialog");
+            var yesTag = loader.GetString("yesTag");
+            var noTag = loader.GetString("noTag");
+            var dialog = new MessageDialog(deleteWarnDialog);
+            dialog.Commands.Add(new UICommand { Label = yesTag, Id = 1 });
+            dialog.Commands.Add(new UICommand { Label = noTag, Id = 0 });
             var result = await dialog.ShowAsync();
 
             if ((int)result.Id == 0)

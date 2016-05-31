@@ -43,14 +43,18 @@ namespace ToDo
             }
             else
             {
-                MessageDialog error = new MessageDialog("Username cannot be empty");
+                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+                var nullUserDialog = loader.GetString("nullUserDialog");
+                MessageDialog error = new MessageDialog(nullUserDialog);
                 await error.ShowAsync();
             }
            
         }
         private async void onClickAboutButton(object sender, RoutedEventArgs e)
         {
-            MessageDialog aboutDialog = new MessageDialog(" ");
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            var aboutMeDialog = loader.GetString("aboutMeDialog");
+            MessageDialog aboutDialog = new MessageDialog(aboutMeDialog);
             await aboutDialog.ShowAsync();
 
         }

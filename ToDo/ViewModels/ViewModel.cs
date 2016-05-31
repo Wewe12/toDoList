@@ -19,10 +19,5 @@ namespace ToDo.ViewModels
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
-
-
-
-     
     }
-
 }

@@ -31,7 +31,7 @@
                 <RowDefinition Height="50" ></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" x:Name="ListTitle" x:Uid="TaskListTitle" Text =" TO DO " FontSize="18.667" HorizontalAlignment="Center" VerticalAlignment="Center" ></TextBlock>
+            <TextBlock Grid.Row="0" x:Name="taskListTitle" x:Uid="taskListTitle"  FontSize="18.667" HorizontalAlignment="Center" VerticalAlignment="Center" ></TextBlock>
             <ListBox Grid.Row="1" x:Name="ListBox1" ItemsSource="{Binding ItemsCollection}" ItemTemplate="{ StaticResource ItemsDataTemplate}"  Background="#FFFFFF" SelectionChanged="ListBox1_SelectionChanged">
             </ListBox>
 
@@ -41,10 +41,10 @@
 
     <Page.BottomAppBar >
         <CommandBar Background="#03A9F4">
-            <AppBarButton Name="Show" Icon="Add" Label="Add"  Click="Add_Click" />
-            <AppBarButton Name="SyncOwner" Icon="Sync" Label="My tasks" Click="Owner_Task_Click" />
-            <AppBarButton Name="SyncAll" Icon="Sync" Label="All tasks" Click="All_Task_Click" />
-            <AppBarButton Name="Cancel" Icon="Cancel" Label="Logout" Click="Logout_Click" />
+            <AppBarButton Name="addTaskButton" x:Uid="addTaskButton"  Icon="Add"  Click="Add_Click" />
+            <AppBarButton Name="syncOnwerButton" x:Uid="syncOnwerButton" Icon="Sync" Label="My tasks" Click="Owner_Task_Click" />
+            <AppBarButton Name="syncAllButton" x:Uid="syncAllButton" Icon="Sync"  Click="All_Task_Click" />
+            <AppBarButton Name="cancelButton" x:Uid="cancelButton" Icon="Cancel"  Click="Logout_Click" />
             
         </CommandBar>
     </Page.BottomAppBar>

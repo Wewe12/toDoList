@@ -29,12 +29,9 @@ namespace ToDo
         {
             this.InitializeComponent();
             DataContext = MainViewModel.I();
-            
             getViewModel().loadLocalSettings();
-     
-            //getViewModel().getOwnerTasks();
-
         }
+
     private MainViewModel getViewModel()
         {
             return DataContext as MainViewModel;
@@ -58,8 +55,7 @@ namespace ToDo
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
-        {
-           
+        {   
             this.Frame.Navigate(typeof(AddPage));
         }
 
@@ -93,9 +89,5 @@ namespace ToDo
             contentGrid.Visibility = Visibility.Visible;
             progressGrid.Visibility = Visibility.Collapsed;
         }
-
-
-
-
     }
 }

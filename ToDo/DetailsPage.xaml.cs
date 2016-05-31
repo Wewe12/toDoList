@@ -47,7 +47,9 @@ namespace ToDo
             }
             else
             {
-                var dialog = new MessageDialog("That's not you task. You don't have right to modify them");
+                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+                var warnDialog = loader.GetString("warnDialog");
+                var dialog = new MessageDialog(warnDialog);
                 await dialog.ShowAsync();
             }
         }

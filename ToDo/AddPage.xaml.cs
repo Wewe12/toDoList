@@ -40,9 +40,14 @@ namespace ToDo
 
         private async void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new MessageDialog("Are you sure you want to cancel?");
-            dialog.Commands.Add(new UICommand { Label = "Yes", Id = 0 });
-            dialog.Commands.Add(new UICommand { Label = "No", Id = 1 });
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            var yesTag = loader.GetString("yesTag");
+            var noTag = loader.GetString("noTag");
+            var cancelNotification = loader.GetString("cancelNotification");
+
+            var dialog = new MessageDialog(cancelNotification);
+            dialog.Commands.Add(new UICommand { Label = yesTag, Id = 0 });
+            dialog.Commands.Add(new UICommand { Label = noTag, Id = 1 });
             var result = await dialog.ShowAsync();
 
             if ((int)result.Id == 0)

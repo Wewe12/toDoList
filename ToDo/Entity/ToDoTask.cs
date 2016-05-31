@@ -23,9 +23,7 @@ namespace ToDo.Entity
             this.ownerId = MainViewModel.I().OwnerId;
             if (id == "") this.id = "0";
             else this.id = id;
-            
             this.createdAt = DateTime.Now.ToString();
-
         }
 
         public string SerializeToDoTask()
