@@ -13,7 +13,6 @@
             <Grid HorizontalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
@@ -21,7 +20,7 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <TextBlock Text="{Binding title}" HorizontalAlignment="Center" Grid.Row="0" TextWrapping="WrapWholeWords"></TextBlock>
-                <TextBlock Text="{Binding ownerId}" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="WrapWholeWords"></TextBlock>
+                <TextBlock Text="{Binding ownerId}" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="WrapWholeWords"></TextBlock>
             </Grid>
         </DataTemplate>
     </Page.Resources>

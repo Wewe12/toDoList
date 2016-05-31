@@ -18,7 +18,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel  Margin="0,50,0,0" Grid.Column="0" Grid.Row="1"  HorizontalAlignment="Center" Width="200">
+        <StackPanel  Margin="0,50,0,0" Grid.Column="0" Grid.Row="1"  HorizontalAlignment="Center" Width="250">
 
             <TextBlock  x:Name="loginTextBox" x:Uid="loginTextBox"   >Please insert your username:</TextBlock>
             <TextBox x:Name="usernameTextBox"/>

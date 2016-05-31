@@ -39,7 +39,10 @@ namespace ToDo
             if (usernameTextBox.Text != "")
             {
                 getViewModel().saveLocalSettings(usernameTextBox.Text);
+                await getViewModel().getOwnerTasks();
                 this.Frame.Navigate(typeof(MainPage));
+                
+             
             }
             else
             {
@@ -53,8 +56,9 @@ namespace ToDo
         private async void onClickAboutButton(object sender, RoutedEventArgs e)
         {
             var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-            var aboutMeDialog = loader.GetString("aboutMeDialog");
-            MessageDialog aboutDialog = new MessageDialog(aboutMeDialog);
+            var aboutMeDialogAuthor = loader.GetString("aboutMeDialogAuthor");
+            var aboutMeDialogEmail = loader.GetString("aboutMeDialogEmail");
+            MessageDialog aboutDialog = new MessageDialog(aboutMeDialogAuthor + "\n" + aboutMeDialogEmail);
             await aboutDialog.ShowAsync();
 
         }

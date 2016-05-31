@@ -30,6 +30,8 @@ namespace ToDo
             this.InitializeComponent();
             DataContext = MainViewModel.I();
             getViewModel().loadLocalSettings();
+            getViewModel().getOwnerTasks();
+          
         }
 
     private MainViewModel getViewModel()
@@ -63,6 +65,7 @@ namespace ToDo
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
             getViewModel().removeLocalSettings();
+            DataContext = null;
             this.Frame.Navigate(typeof(LoginPage));
         }
         private void ListBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)

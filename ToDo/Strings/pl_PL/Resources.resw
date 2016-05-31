@@ -120,8 +120,11 @@
   <data name="aboutButton.Content" xml:space="preserve">
     <value>O mnie</value>
   </data>
-  <data name="aboutMeDialog" xml:space="preserve">
-    <value>Autor: \n Ewelina Bukowska \n Kontakt: \n ew.bukowska@gmail.com</value>
+  <data name="aboutMeDialogAuthor" xml:space="preserve">
+    <value>Autor: Ewelina Bukowska</value>
+  </data>
+  <data name="aboutMeDialogEmail" xml:space="preserve">
+    <value>Kontakt: ew.bukowska@gmail.com</value>
   </data>
   <data name="acceptButtonAdd.Label" xml:space="preserve">
     <value>Dodaj</value>
@@ -134,6 +137,12 @@
   </data>
   <data name="appBarAddTextBlock.Text" xml:space="preserve">
     <value>Dodaj nowe zadanie</value>
+  </data>
+  <data name="appBarDetailsTextBlock.Text" xml:space="preserve">
+    <value>Obecne zadanie</value>
+  </data>
+  <data name="appBarEditTextBlock.Text" xml:space="preserve">
+    <value>Edytuj zadanie</value>
   </data>
   <data name="backButtonAdd.Label" xml:space="preserve">
     <value>Anuluj</value>
@@ -169,7 +178,7 @@
     <value>Zaloguj</value>
   </data>
   <data name="loginTextBox.Text" xml:space="preserve">
-    <value>Proszę wprowadź swoją nazwę użytkownika</value>
+    <value>Proszę, podaj nazwę użytkownika:</value>
   </data>
   <data name="noTag" xml:space="preserve">
     <value>Nie</value>
@@ -181,7 +190,7 @@
     <value>Wszystkie zadania</value>
   </data>
   <data name="syncOnwerButton.Label" xml:space="preserve">
-    <value>Wszystkie moje zadania</value>
+    <value>Moje zadania</value>
   </data>
   <data name="taskListTitle.Text" xml:space="preserve">
     <value>TO DO</value>

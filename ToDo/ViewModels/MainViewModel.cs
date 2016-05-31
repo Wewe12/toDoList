@@ -132,6 +132,7 @@ namespace ToDo.ViewModels
                 client.BaseAddress = new Uri(REST_BASE_URL);
                 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, REST_PATH + myTask.id);
                 request.Content = new StringContent(myTask.SerializeToDoTask(), Encoding.UTF8, "application/json");
+                await client.SendAsync(request);
             }
         }
 

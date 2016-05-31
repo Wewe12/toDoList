@@ -120,8 +120,11 @@
   <data name="aboutButton.Content" xml:space="preserve">
     <value>About me</value>
   </data>
-  <data name="aboutMeDialog" xml:space="preserve">
-    <value>Author: \n Ewelina Bukowska \n  Contact: \n ew.bukowska@gmail.com</value>
+  <data name="aboutMeDialogAuthor" xml:space="preserve">
+    <value>Author: Ewelina Bukowska </value>
+  </data>
+  <data name="aboutMeDialogEmail" xml:space="preserve">
+    <value>Contact: ew.bukowska@gmail.com</value>
   </data>
   <data name="acceptButtonAdd.Label" xml:space="preserve">
     <value>Add</value>
@@ -134,6 +137,12 @@
   </data>
   <data name="appBarAddTextBlock.Text" xml:space="preserve">
     <value>Add new task</value>
+  </data>
+  <data name="appBarDetailsTextBlock.Text" xml:space="preserve">
+    <value>Current task</value>
+  </data>
+  <data name="appBarEditTextBlock.Text" xml:space="preserve">
+    <value>Edit task</value>
   </data>
   <data name="backButtonAdd.Label" xml:space="preserve">
     <value>Cancel</value>
