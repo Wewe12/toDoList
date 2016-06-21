@@ -60,7 +60,8 @@ namespace ToDo
             ToDoTask myTask = new ToDoTask(titleTextBox.Text, valueTextBox.Text, getViewModel().CurrentObject.id);
             if (getViewModel().CurrentObject.ownerId.Equals(myTask.ownerId))
             {
-                getViewModel().updateTask(myTask);
+                NetworkProvider provider = new NetworkProvider();
+                provider.updateTask(myTask);
                 Frame.GoBack();
             }
               
@@ -93,7 +94,8 @@ namespace ToDo
             {
                 //delete post
                 ToDoTask myTask = new ToDoTask(titleTextBox.Text, valueTextBox.Text, getViewModel().CurrentObject.id);
-                await getViewModel().deleteTask(myTask);
+                NetworkProvider provider = new NetworkProvider();
+                await provider.deleteTask(myTask);
                 this.Frame.Navigate(typeof(MainPage));
             }
 

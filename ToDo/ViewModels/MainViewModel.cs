@@ -14,16 +14,15 @@ namespace ToDo.ViewModels
 {
     class MainViewModel : ViewModel
     {
-        //CONST REST
-        private const string REST_BASE_URL = "http://windowsphoneuam.azurewebsites.net/";
-        private const string REST_PATH = "api/todotasks/";
-        private const string OWNER_SEARCH_PATH = "?OwnerId=";
-
+    
         //CONST LOCAL SETTINGS
         private const string LOCAL_SETTINGS_TAG = "Owner";
 
         private string ownerId { get; set; }
         public string OwnerId { get { return ownerId; } set { ownerId = value; } }
+
+        private bool allTask { get; set; } = false;
+        public bool AllTask { get { return allTask; } set { allTask = value; } }
 
         private ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
         private static MainViewModel instance { get; set; }
@@ -82,71 +81,6 @@ namespace ToDo.ViewModels
         {
             localSettings.Values.Remove(LOCAL_SETTINGS_TAG);
             ownerId = "";
-        }
-
-        //REST
-
-        //GET
-        public async Task getTasks()
-        {    
-            using (HttpClient client = new HttpClient())
-            {
-                var result = await client.GetAsync(REST_BASE_URL + "/" + REST_PATH );
-                var items = await result.Content.ReadAsStringAsync();
-                itemsCollection =  JsonConvert.DeserializeObject<ObservableCollection<ToDoTask>>(items);
-            }
-        }
-        //GET 
-        public async Task getOwnerTasks()
-        {
-            using (HttpClient client = new HttpClient())
-            {
-                var result = await client.GetAsync(REST_BASE_URL + "/" + REST_PATH + OWNER_SEARCH_PATH + ownerId);
-                var items = await result.Content.ReadAsStringAsync();
-                itemsCollection = JsonConvert.DeserializeObject<ObservableCollection<ToDoTask>>(items);
-            }
-        }
-
-        //POST
-        public async void postTask(ToDoTask myTask)
-        {
-            using (HttpClient client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(REST_BASE_URL);
-                client.DefaultRequestHeaders
-                    .Accept
-                    .Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, REST_PATH);
-                request.Content = new StringContent(myTask.SerializeToDoTask(), Encoding.UTF8, "application/json");
-                await client.SendAsync(request);
-            }
-        }
-
-
-        //PUT
-        public async void updateTask(ToDoTask myTask)
-        {
-            myTask.createdAt = DateTime.Now.ToString("dd'-'MM'-'yyyy HH:mm:ss");
-            using (HttpClient client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(REST_BASE_URL);
-                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, REST_PATH + myTask.id);
-                request.Content = new StringContent(myTask.SerializeToDoTask(), Encoding.UTF8, "application/json");
-                await client.SendAsync(request);
-            }
-        }
-
-        //DELETE
-        public async Task deleteTask(ToDoTask myTask)
-        {
-            using (HttpClient client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(REST_BASE_URL);
-
-                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, REST_PATH + myTask.id);
-                await client.SendAsync(request);
-                
-            }
         }
 
     }

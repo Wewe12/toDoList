@@ -62,8 +62,8 @@ namespace ToDo
         private void Accept_Click(object sender, RoutedEventArgs e)
         {
             ToDoTask myTask = new ToDoTask(titleTextBox.Text, valueTextBox.Text, "");
-
-            getViewModel().postTask(myTask);
+            NetworkProvider provider = new NetworkProvider();
+            provider.postTask(myTask);
             this.Frame.GoBack();
         }
 

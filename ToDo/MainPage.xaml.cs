@@ -30,8 +30,12 @@ namespace ToDo
             this.InitializeComponent();
             DataContext = MainViewModel.I();
             getViewModel().loadLocalSettings();
-            getViewModel().getOwnerTasks();
-          
+            NetworkProvider provider = new NetworkProvider();
+            if (getViewModel().AllTask != true)
+            {
+                provider.getOwnerTasks(getViewModel());
+            }
+            
         }
 
     private MainViewModel getViewModel()
@@ -41,17 +45,19 @@ namespace ToDo
 
         private async void Owner_Task_Click(object sender, RoutedEventArgs e)
         {
-
+            NetworkProvider provider = new NetworkProvider();
             startProgressBar();
-            await getViewModel().getOwnerTasks();
+            await provider.getOwnerTasks(getViewModel());
             stopProgressBar();
             this.Frame.Navigate(typeof(MainPage));
 
         }
         private async void All_Task_Click(object sender, RoutedEventArgs e)
         {
+            getViewModel().AllTask = true;
+            NetworkProvider provider = new NetworkProvider();
             startProgressBar();
-            await getViewModel().getTasks();
+            await provider.getTasks(getViewModel());
             stopProgressBar();
             this.Frame.Navigate(typeof(MainPage));
         }

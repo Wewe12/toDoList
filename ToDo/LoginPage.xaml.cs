@@ -39,7 +39,6 @@ namespace ToDo
             if (usernameTextBox.Text != "")
             {
                 getViewModel().saveLocalSettings(usernameTextBox.Text);
-                await getViewModel().getOwnerTasks();
                 this.Frame.Navigate(typeof(MainPage));
                 
              
